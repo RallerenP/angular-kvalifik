@@ -1,0 +1,58 @@
+header {
+  @apply relative flex items-center;
+
+  width: 100vw;
+  height: var(--header-height);
+  box-shadow: 0 3px 6px #AAAAAA29;
+
+  padding: 0 149px 0 149px;
+}
+
+.branding {
+  background: transparent url('/assets/img/Logo_payoff.svg') 0% 0% no-repeat padding-box;
+  width: 128px;
+  height: 43px;
+
+  transform: translate(-50%, -50%);
+}
+
+.header-info {
+
+  .header-text {
+    @apply flex items-center;
+
+    color: var(--cbs-s-blå-skygge);
+    margin-right: 13.5px;
+    font-family: Open Sans;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .profile-button {
+    @apply transition-colors duration-100 flex justify-center items-center;
+
+    height: 36px;
+    width: 36px;
+
+    margin-left: 13.5px;
+
+    background: var(--cbs-s-blå-skygge);
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    &:hover {
+      background: var(--cbs-s-blå);
+    }
+
+    div {
+      padding: 0;
+      height: 14px;
+      width: 14px;
+      background: transparent url("/assets/img/icons8-user_account.svg") 0% 0% no-repeat padding-box;
+    }
+  }
+
+}
+

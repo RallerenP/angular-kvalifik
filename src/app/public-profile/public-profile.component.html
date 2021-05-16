@@ -1,0 +1,46 @@
+<form [formGroup]="publicProfileForm" (ngSubmit)="onSubmit()">
+
+  <label for="logo">Logo</label>
+  <img
+    [src]="logoUrl.value"
+    id="logo">
+  <input type="text" placeholder="Image URL" #logoUrl formControlName="logoUrl">
+  <button type="button"></button>
+
+  <label for="cover">Cover photo</label>
+  <img
+    [src]="coverUrl.value"
+    id="cover">
+  <input type="text" placeholder="Cover Image URL" #coverUrl formControlName="coverUrl">
+  <button type="button"></button>
+
+  <h3>About</h3>
+  <p>Write a header and a short text aobut the organisation. You can add more headers if you need to</p>
+
+  <input type="text" class="border" placeholder="Header" formControlName="organisationHeader">
+
+  <textarea class="border" placeholder="Body" rows="6" formControlName="organisationBody"></textarea>
+
+  <button type="button" (click)="onOrganisation()">New Description Block</button>
+
+  <h3>Contact information</h3>
+
+  <label for="email">E-mail</label>
+  <input
+    type="text"
+    id="email"
+    placeholder="E-mail address"
+    formControlName="email">
+
+  <label for="contact">Contact person</label>
+  <input
+    type="text"
+    id="contact"
+    placeholder="Name of the contact person"
+    formControlName="contactPerson">
+
+  <button type="button" (click)="onPreview()">Preview</button>
+
+  <button type="submit" [disabled]="!publicProfileForm.valid">Save & publish profile</button>
+
+</form>

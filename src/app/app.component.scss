@@ -1,0 +1,15 @@
+.header {
+  flex: 0 0 auto;
+}
+
+.non-header {
+  max-height: calc(100% - var(--header-height));
+}
+
+.flex-fill {
+  flex: 0 1 auto;
+}
+
+.content {
+  padding: 48px;
+}

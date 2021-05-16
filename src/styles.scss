@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+  /* Colors: */
+  --unnamed-color-ffffff: #FFFFFF;
+  --cbs-s-blå-tone: #BABADD;
+  --cbs-s-blå-skygge: #32305D;
+  --unnamed-color-eeeeee: #EEEEEE;
+  --unnamed-color-707070: #707070;
+  --cbs-s-blå: #5050A5;
+  --unnamed-color-333333: #333333;
+  --orange-tone: #F9AE7A;
+  --unnamed-color-aaaaaa: #AAAAAA;
+  --grøn-tone: #88E288;
+  --gul-skygge: #FFBA00;
+  --orange: #FF9400;
+  --orange-skygge: #FF7100;
+  --unnamed-color-f5f5f5: #F5F5F5;
+  --blågrøn-skygge: #07936B;
+  --rød-skygge: #B10024;
+  --grøn-skygge: #276B27;
+  --gul-tone: #FFE8B0;
+  --grøn: #46AF46;
+  --rød: #FA2846;
+  --lilla: #C238C6;
+  --lilla-skygge: #700F6E;
+  --lilla-tone: #DDA6DD;
+  --blå: #4263DB;
+  --blå-skygge: #0E358C;
+  --blå-tone: #83B9EA;
+  --blågrøn: #37D192;
+  --blågrøn-tone: #8BE8CF;
+  --gul: #FFDD4D;
+  --rød-tone: #FF8DA6;
+
+  --header-height: 72px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}

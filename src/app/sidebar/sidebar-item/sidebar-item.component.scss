@@ -1,0 +1,27 @@
+li {
+  cursor: pointer;
+  height: 60px;
+  @apply relative;
+
+  .icon {
+    @apply absolute;
+    top: 50%;
+    left: 50px;
+    fill: var(--cbs-s-blå-skygge);
+    transform: translate(0, -50%);
+  }
+
+  .title {
+    @apply absolute;
+    top: 50%;
+    left: 100px;
+    transform: translate(0, -50%);
+    color: var(--cbs-s-blå-skygge);
+  }
+
+}
+
+.selected {
+  border-right: 5px solid var(--cbs-s-blå-skygge);
+  background: var(--cbs-s-blå-tone);
+}
