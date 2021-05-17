@@ -1,0 +1,77 @@
+h1 {
+  color: #32305D;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h3 {
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.invitation {
+  margin-bottom: 5px;
+  padding: 25px;
+  width: 891px;
+  height: 142px
+}
+
+.invitation-header {
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.invitation-info {
+  color: #707070;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.invitation-description {
+  color: #707070;
+  font-size: 14px;
+}
+
+.column {
+  display: flex;
+}
+
+.left {
+  flex: 80%;
+}
+
+.right {
+  flex: 20%;
+}
+
+button {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.showAllButton {
+  border: 1px solid #5050A5;
+  width: 172px;
+  padding: 5px;
+  color: #5050A5;
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 25%;
+}
+
+.accept {
+  background: #5050A5;
+  border: none;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+

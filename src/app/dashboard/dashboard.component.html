@@ -1,1 +1,52 @@
-<p>dashboard works!</p>
+<h1>Collaboration</h1>
+
+<div id="invitations">
+  <h3>Invitations <span *ngIf="invitations.length > 0">({{ invitations.length }})</span></h3>
+
+  <div class="invitation" *ngFor="let invitation of invitationsToShow">
+      <div class="column">
+
+        <div class="left">
+          <p class="invitation-header">Post • {{ invitation.title }}</p>
+          <p class="invitation-info">{{ invitation.collaboration | uppercase}} • {{ date | uppercase}}</p>
+          <p class="invitation-description">{{ invitation.description }}</p>
+        </div>
+
+        <div class="right">
+          <button type="button" class="accept">Accept</button>
+          <button type="button">Decline</button>
+        </div>
+
+    </div>
+  </div>
+  <div>
+    <p *ngIf="invitations.length <= 0">No pending invitations</p>
+    <button *ngIf="invitations.length > 2" class="showAllButton" (click)="onShowAllInvitations()">{{showAllInvitations ? 'Hide all' : 'Show all'}}</button>
+  </div>
+</div>
+
+<div id="accepted-collaborations">
+  <h3>Accepted collaborations <span *ngIf="collaborations.length > 0">({{ collaborations.length }})</span></h3>
+
+  <!-- For now all these are created via the invitations array, should be created from a separate collaborations array -->
+  <div class="invitation" *ngFor="let collaboration of collaborationsToShow">
+    <div class="column">
+
+      <div class="left">
+        <p class="invitation-header">Post • {{collaboration.title}}</p>
+        <p class="invitation-info">{{ collaboration.location }} • {{ date | uppercase}}</p>
+        <p class="invitation-description">{{ collaboration.description }}</p>
+      </div>
+
+      <div class="right">
+        <button type="button">Remove</button>
+      </div>
+
+    </div>
+  </div>
+  <div>
+    <p *ngIf="invitations.length <= 0">No pending invitations</p>
+    <button *ngIf="invitations.length > 2" class="showAllButton" (click)="onShowAllCollaborations()">{{ showAllCollaborations ? 'Hide all' : 'Show all'}}</button>
+  </div>
+
+</div>

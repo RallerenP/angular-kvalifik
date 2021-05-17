@@ -1,0 +1,84 @@
+button {
+  background: #5050A5;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+button[type=submit] {
+  background: #07936B;
+}
+
+#previewButton {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+input {
+  border: 1px solid #AAAAAA;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#about input{
+  width: 50%;
+}
+
+#about textarea{
+  width: 50%;
+  border: 1px solid #AAAAAA;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#logo {
+  width: 35%;
+}
+
+#cover {
+  width: 60%;
+}
+
+.row {
+  display: flex;
+  width: 886px;
+}
+
+.column {
+  flex: 50%;
+}
+
+h1 {
+  color: #32305D;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h3 {
+  color: #32305D;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+label {
+  color: #333333;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#about p {
+  color: #707070;
+  font-size: 16px;
+}
+
+//Idk why, but textarea doesnt receive the red border even though ng-invalid and ng-touched is on the element
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+button:disabled {
+  background: rgba(7, 147, 107, 0.5);
+}
+

@@ -1,45 +1,75 @@
+<h1>{{ signedInAs }}</h1>
+
 <form [formGroup]="publicProfileForm" (ngSubmit)="onSubmit()">
 
-  <label for="logo">Logo</label>
-  <img
-    [src]="logoUrl.value"
-    id="logo">
-  <input type="text" placeholder="Image URL" #logoUrl formControlName="logoUrl">
-  <button type="button"></button>
+  <div class="row">
+    <div class="column">
 
-  <label for="cover">Cover photo</label>
-  <img
-    [src]="coverUrl.value"
-    id="cover">
-  <input type="text" placeholder="Cover Image URL" #coverUrl formControlName="coverUrl">
-  <button type="button"></button>
+      <label for="logo">Logo</label>
+      <img
+        [src]="logoUrl.value"
+        id="logo">
+      <input
+        type="text"
+        placeholder="Image URL"
+        #logoUrl
+        formControlName="logoUrl">
+      <div *ngIf="form.logoUrl.errors?.required && form.logoUrl.touched">Please add an URL to a picture</div>
 
-  <h3>About</h3>
-  <p>Write a header and a short text aobut the organisation. You can add more headers if you need to</p>
+    </div>
+    <div class="column">
 
-  <input type="text" class="border" placeholder="Header" formControlName="organisationHeader">
+      <label for="cover">Cover photo</label>
+      <img
+        [src]="coverUrl.value"
+        id="cover">
+      <input
+        type="text"
+        placeholder="Cover Image URL"
+        #coverUrl
+        formControlName="coverUrl">
+      <div *ngIf="form.coverUrl.errors?.required && form.coverUrl.touched">Please add an URL to a picture</div>
 
-  <textarea class="border" placeholder="Body" rows="6" formControlName="organisationBody"></textarea>
+    </div>
+  </div>
 
-  <button type="button" (click)="onOrganisation()">New Description Block</button>
+  <div id="about">
+    <h3>About</h3>
+    <p>Write a header and a short text aobut the organisation. You can add more headers if you need to.</p>
 
-  <h3>Contact information</h3>
+    <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
 
-  <label for="email">E-mail</label>
-  <input
-    type="text"
-    id="email"
-    placeholder="E-mail address"
-    formControlName="email">
+    <textarea class="border" placeholder="Body" rows="6" formControlName="organisationBody"></textarea><br>
+    <div *ngIf="form.organisationHeader.errors?.required && form.organisationHeader.touched">Please add text to the org. header</div>
+    <div *ngIf="form.organisationBody.errors?.required && form.organisationBody.touched">Please add text to the org. body</div>
 
-  <label for="contact">Contact person</label>
-  <input
-    type="text"
-    id="contact"
-    placeholder="Name of the contact person"
-    formControlName="contactPerson">
+    <button type="button" (click)="onOrganisation()">New Description Block</button>
+  </div>
 
-  <button type="button" (click)="onPreview()">Preview</button>
+  <div id="contact-information">
+    <h3>Contact information</h3>
+    <label for="email">E-mail</label><br>
+    <input
+      type="text"
+      id="email"
+      placeholder="E-mail address"
+      formControlName="email">
+    <div *ngIf="form.email.errors?.required && form.email.touched && !form.email.valid">Please add an email</div>
+    <div *ngIf="!form.email.errors?.required && form.email.touched && !form.email.valid">Please add a <strong>real</strong> email</div>
+
+    <br>
+
+    <label for="contact">Contact person</label><br>
+    <input
+      type="text"
+      id="contact"
+      placeholder="Name of the contact person"
+      formControlName="contactPerson">
+    <div *ngIf="form.contactPerson.errors?.required && form.contactPerson.touched">Please add a contact person</div>
+  </div>
+
+
+  <button type="button" id="previewButton" (click)="onPreview()">Preview</button>
 
   <button type="submit" [disabled]="!publicProfileForm.valid">Save & publish profile</button>
 
