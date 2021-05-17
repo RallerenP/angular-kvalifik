@@ -9,13 +9,18 @@ import {Collaboration} from "../models/collaboration.model";
 })
 export class DashboardComponent implements OnInit {
 
-  invitationsToShow: Post[]
+  invitationsToShow!: Post[];
   invitations: Post[] = [this.generatePost(), this.generatePost(), this.generatePost()]
-  collaborationsToShow: Collaboration[]
-  collaborations: Collaboration[] = [this.generateCollab(), this.generateCollab(), this.generateCollab(), this.generateCollab(), this.generateCollab()]
+  collaborationsToShow!: Post[]
+  collaborations: Post[] = [this.generatePost(), this.generatePost(), this.generatePost(), this.generatePost(), this.generatePost()]
   date: string = "19 may 2020"
   showAllInvitations: boolean = false
   showAllCollaborations: boolean = false
+
+  followers: number = Math.floor(Math.random() * 1000);
+  followersLastWeek: number = Math.floor(Math.random() * 1000);
+
+  followerDiff: number = Math.abs(this.followers - this.followersLastWeek);
 
   constructor() {}
 

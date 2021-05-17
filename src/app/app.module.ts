@@ -14,6 +14,7 @@ import { ChatsComponent } from './chats/chats.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { InvitationComponent } from './dashboard/invitation/invitation.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     CollectionsComponent,
     ChatsComponent,
     VolunteersComponent,
-    SidebarItemComponent
+    SidebarItemComponent,
+    InvitationComponent
   ],
   imports: [
     BrowserModule,
