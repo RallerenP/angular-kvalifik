@@ -1,0 +1,20 @@
+<div class="invitation">
+    <div class="invitation-info">
+      <h1 class="invitation-header">Post • {{ invitation.title }}</h1>
+      <h2 class="">{{ invitation.collaboration | uppercase}} • {{ date | uppercase}}</h2>
+      <p class="invitation-description">{{ invitation.description }}</p>
+    </div>
+
+
+    <div  class="invitation-buttons justify-center flex flex-col">
+      <ng-template *ngIf="accepted; then thenBlock else elseBlock"></ng-template>
+      <ng-template #thenBlock>
+        <button type="button">Remove</button>
+      </ng-template>
+      <ng-template #elseBlock>
+        <button type="button" class="accept">Accept</button>
+        <button type="button">Decline</button>
+      </ng-template>
+    </div>
+
+</div>

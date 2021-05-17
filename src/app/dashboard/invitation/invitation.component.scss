@@ -1,0 +1,66 @@
+.invitation {
+  @apply flex justify-center;
+
+  background: #f6f6f6;
+  padding: 24px;
+  margin: 8px 0 8px 0;
+  border-radius: 10px;
+  height: 142px;
+
+  .invitation-info {
+    @apply flex-grow flex flex-col justify-center;
+
+    h1 {
+      color: #333;
+      font: normal normal bold 16px/22px Open Sans;
+    }
+
+    h2 {
+      color: #707070;
+      font: normal normal bold 12px/17px Open Sans;
+      margin: 8px 0 8px 0;
+    }
+
+    p {
+      color: #707070;
+      font: normal normal normal 14px/19px Open Sans;
+    }
+  }
+
+  .invitation-buttons {
+
+
+
+    button {
+      @apply transition-colors duration-100;
+
+      width: 176px;
+      height: 36px;
+
+      font: normal normal bold 16px/22px Open Sans;
+      text-align: center;
+
+      background: #fff;
+
+      margin: 6px 0 6px 0;
+
+      border: 1px solid #333;
+      border-radius: 5px;
+
+      &:hover {
+        background: #F0F0F0
+      }
+    }
+
+    button.accept {
+      background: var(--cbs-s-blå);
+      color: #fff;
+      border: none;
+
+      &:hover {
+        background: #6969bf;
+      }
+    }
+
+  }
+}
