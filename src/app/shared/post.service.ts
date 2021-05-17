@@ -8,8 +8,8 @@ import {FormGroup} from "@angular/forms";
 export class PostService{
 
   posts: Post[] = this.generatePosts()
-  editMode: boolean
-  editItemIndex: number
+  editMode!: boolean
+  editItemIndex!: number
 
   constructor() { }
 
