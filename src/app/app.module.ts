@@ -13,8 +13,9 @@ import { CollectionsComponent } from './collections/collections.component';
 import { ChatsComponent } from './chats/chats.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { InvitationComponent } from './dashboard/invitation/invitation.component';
+import { PostEditorComponent } from './posts/post-editor/post-editor.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -22,6 +23,8 @@ const appRoutes: Routes = [
   { path: 'public-profile', component: PublicProfileComponent},
   { path: 'events', component: EventsComponent},
   { path: 'posts', component: PostsComponent},
+  { path: 'new-post', component: PostEditorComponent},
+  { path: 'edit/:id', component: PostEditorComponent},
   { path: 'collections', component: CollectionsComponent},
   { path: 'chats', component: ChatsComponent},
   { path: 'volunteers', component:VolunteersComponent }
@@ -41,7 +44,8 @@ const appRoutes: Routes = [
     ChatsComponent,
     VolunteersComponent,
     SidebarItemComponent,
-    InvitationComponent
+    InvitationComponent,
+    PostEditorComponent,
   ],
   imports: [
     BrowserModule,

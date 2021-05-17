@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Post} from "../models/post.model";
+import {PostService} from "../shared/post.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[] = this.postService.getPosts()
 
-  ngOnInit(): void {
+  constructor(private postService: PostService, private router: Router) { }
+
+  ngOnInit(): void {}
+
+  onEdit(id: number) {
+    this.postService.editMode = true
+    this.postService.editItemIndex = id
+    this.router.navigate(['/edit', id])
   }
 
 }

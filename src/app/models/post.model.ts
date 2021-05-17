@@ -6,9 +6,11 @@ export class Post {
   pinned: boolean
   responsible: string
   collaboration: string
+  status: string
+  createdDate: Date
+  activity: number[]
 
-
-  constructor(title: string, description: string, media: string, collection: string[], pinned: boolean, responsible: string, collaboration: string) {
+  constructor(title: string, description: string, media: string, collection: string[], pinned: boolean, responsible: string, collaboration: string, status: string, createdDate: Date, activity: number[]) {
     this.title = title;
     this.description = description;
     this.media = media;
@@ -16,5 +18,8 @@ export class Post {
     this.pinned = pinned;
     this.responsible = responsible;
     this.collaboration = collaboration;
+    this.status = status
+    this.createdDate = createdDate
+    this.activity = activity
   }
 }
