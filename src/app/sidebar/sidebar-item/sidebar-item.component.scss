@@ -19,6 +19,10 @@ li {
     color: var(--cbs-s-blå-skygge);
   }
 
+  &:not(.selected):hover {
+    background: #f2f2f9;
+    border-right: 5px solid var(--cbs-s-blå-tone)
+  }
 }
 
 .selected {

@@ -10,13 +10,18 @@ import {PostService} from "../shared/post.service";
 })
 export class DashboardComponent implements OnInit {
 
-  invitationsToShow: Post[]
-  invitations: Post[] = this.postService.getPosts()
-  collaborationsToShow: Collaboration[]
-  collaborations: Collaboration[] = [this.generateCollab(), this.generateCollab(), this.generateCollab(), this.generateCollab(), this.generateCollab()]
+  invitationsToShow!: Post[];
+  invitations: Post[] = this.postService.getPosts();
+  collaborationsToShow!: Post[];
+  collaborations: Post[] = this.postService.getPosts();
   date: string = "19 may 2020"
   showAllInvitations: boolean = false
   showAllCollaborations: boolean = false
+
+  followers: number = Math.floor(Math.random() * 1000)
+  followersLastWeek: number = Math.floor(Math.random() * 1000)
+
+  followerDiff: number = Math.abs(this.followers - this.followersLastWeek)
 
   constructor(private postService: PostService) {}
 

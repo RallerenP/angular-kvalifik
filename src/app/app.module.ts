@@ -13,7 +13,8 @@ import { CollectionsComponent } from './collections/collections.component';
 import { ChatsComponent } from './chats/chats.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
+import { InvitationComponent } from './dashboard/invitation/invitation.component';
 import { PostEditorComponent } from './posts/post-editor/post-editor.component';
 
 const appRoutes: Routes = [
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     ChatsComponent,
     VolunteersComponent,
     SidebarItemComponent,
+    InvitationComponent,
     PostEditorComponent,
   ],
   imports: [

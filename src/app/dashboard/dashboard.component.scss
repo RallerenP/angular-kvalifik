@@ -1,70 +1,111 @@
-h1 {
-  color: #32305D;
-  font-size: 26px;
-  font-weight: bold;
-}
-
 h3 {
   color: #333333;
   font-size: 16px;
   font-weight: bold;
 }
 
-.invitation {
-  margin-bottom: 5px;
-  padding: 25px;
-  width: 891px;
-  height: 142px
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 48px;
+
+  .collaborations {
+    grid-area: 1 / 1 / 2 / 2;
+    box-shadow: 0 3px 6px #AAAAAA29;
+    border-radius: 10px;
+    background: #fff;
+    padding: 24px;
+
+    h1 {
+      margin-bottom: 24px;
+      color: var(--cbs-s-blå-skygge);
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .container-inner {
+      padding: 8px;
+
+      h3 {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .followers {
+    @apply relative;
+    background: white;
+    height: 300px;
+
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px #AAAAAA29;
+
+    padding: 24px;
+
+    .followers-container-inner {
+      @apply flex flex-col relative;
+
+      height: 100%;
+      width: 100%;
+
+      h1 {
+        font: normal normal bold 26px/36px Open Sans;
+        color: var(--cbs-s-blå-skygge)
+      }
+
+      p {
+        margin-bottom: 40px;
+        text-align: center;
+        color: var(--blågrøn-skygge)
+      }
+
+      p.negative {
+        color: var(--rød-skygge)
+      }
+
+    }
+
+    h2 {
+      font: normal normal normal 60px/86px Teko;
+      color: var(--cbs-s-blå);
+    }
+  }
 }
 
-.invitation-header {
-  color: #333333;
-  font-size: 16px;
-  font-weight: bold;
+.absolute-center {
+  @apply absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
 }
 
-.invitation-info {
-  color: #707070;
-  font-size: 12px;
-  font-weight: bold;
+.flex-center {
+  @apply flex justify-center;
 }
 
-.invitation-description {
-  color: #707070;
-  font-size: 14px;
-}
-
-.column {
-  display: flex;
-}
-
-.left {
-  flex: 80%;
-}
-
-.right {
-  flex: 20%;
-}
-
-button {
-  width: 100%;
-  background: #FFFFFF;
-  border: 1px solid #333333;
-  border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  font-weight: bold;
+.divider {
+  margin: 20px 0 20px 0;
 }
 
 .showAllButton {
-  border: 1px solid #5050A5;
+  @apply transition-colors duration-100;
+
+  height: 36px;
   width: 172px;
-  padding: 5px;
-  color: #5050A5;
-  font-weight: bold;
-  font-size: 16px;
-  margin-left: 25%;
+
+  border: 1px solid var(--cbs-s-blå);
+  border-radius: 5px;
+
+  font: normal normal bold 16px/22px Open Sans;
+  color: var(--cbs-s-blå);
+
+  margin-bottom: 24px;
+
+  &:hover {
+    background: #f5f5ff
+  }
 }
 
 .accept {

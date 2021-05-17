@@ -1,76 +1,90 @@
-<h1>{{ signedInAs }}</h1>
+<div class="container flex flex-col">
+  <h1>{{ signedInAs }}</h1>
+  <div class="separator"></div>
 
-<form [formGroup]="publicProfileForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="publicProfileForm" (ngSubmit)="onSubmit()">
+    <div class="section-images flex">
+      <div>
+        <p>Logo</p>
 
-  <div class="row">
-    <div class="column">
+        <img
+          [src]="logoUrl.value || 'https://cdn.wallpapersafari.com/33/59/rhOxYn.jpg'"
+          id="logo"
+          >
+        <input
+          type="text"
+          placeholder="Image URL"
+          #logoUrl
+          formControlName="logoUrl">
+        <div *ngIf="form.logoUrl.errors?.required && form.logoUrl.touched">Please add an URL to a picture</div>
+      </div>
+      <div>
+        <p>Cover photo</p>
+        <img
+          [src]="coverUrl.value || 'http://www.morningmobi.com/images/post/2013/07/fb_10minion2_preview.jpg'"
+          id="cover">
+        <input
+          type="text"
+          placeholder="Cover Image URL"
+          #coverUrl
+          formControlName="coverUrl">
+        <div *ngIf="form.coverUrl.errors?.required && form.coverUrl.touched">Please add an URL to a picture</div>
+      </div>
+    </div>
+    <div class="separator"></div>
 
-      <label for="logo">Logo</label>
-      <img
-        [src]="logoUrl.value"
-        id="logo">
+    <div class="section-about">
+      <h2>About</h2>
+      <p>Write a header and a short text aobut the organisation. You can add more headers if you need to.</p>
+
+      <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
+
+      <textarea class="border" placeholder="Body" rows="6" formControlName="organisationBody"></textarea><br>
+      <div *ngIf="form.organisationHeader.errors?.required && form.organisationHeader.touched">Please add text to the org. header</div>
+      <div *ngIf="form.organisationBody.errors?.required && form.organisationBody.touched">Please add text to the org. body</div>
+
+      <button type="button" (click)="onOrganisation()">New Description Block</button>
+    </div>
+    <div class="separator"></div>
+    <div class="section-contact" id="contact-information">
+      <h2>Contact information</h2>
+      <p>E-mail</p>
       <input
         type="text"
-        placeholder="Image URL"
-        #logoUrl
-        formControlName="logoUrl">
-      <div *ngIf="form.logoUrl.errors?.required && form.logoUrl.touched">Please add an URL to a picture</div>
-
-    </div>
-    <div class="column">
-
-      <label for="cover">Cover photo</label>
-      <img
-        [src]="coverUrl.value"
-        id="cover">
+        id="email"
+        placeholder="E-mail address"
+        formControlName="email">
+      <div *ngIf="form.email.errors?.required && form.email.touched && !form.email.valid">Please add an email</div>
+      <div *ngIf="!form.email.errors?.required && form.email.touched && !form.email.valid">Please add a <strong>real</strong> email</div>
+      <p>Contact person</p>
       <input
         type="text"
-        placeholder="Cover Image URL"
-        #coverUrl
-        formControlName="coverUrl">
-      <div *ngIf="form.coverUrl.errors?.required && form.coverUrl.touched">Please add an URL to a picture</div>
-
+        id="contact"
+        placeholder="Name of the contact person"
+        formControlName="contactPerson">
+      <div *ngIf="form.contactPerson.errors?.required && form.contactPerson.touched">Please add a contact person</div>
     </div>
-  </div>
 
-  <div id="about">
-    <h3>About</h3>
-    <p>Write a header and a short text aobut the organisation. You can add more headers if you need to.</p>
+    <div class="separator"></div>
 
-    <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
-
-    <textarea class="border" placeholder="Body" rows="6" formControlName="organisationBody"></textarea><br>
-    <div *ngIf="form.organisationHeader.errors?.required && form.organisationHeader.touched">Please add text to the org. header</div>
-    <div *ngIf="form.organisationBody.errors?.required && form.organisationBody.touched">Please add text to the org. body</div>
-
-    <button type="button" (click)="onOrganisation()">New Description Block</button>
-  </div>
-
-  <div id="contact-information">
-    <h3>Contact information</h3>
-    <label for="email">E-mail</label><br>
-    <input
-      type="text"
-      id="email"
-      placeholder="E-mail address"
-      formControlName="email">
-    <div *ngIf="form.email.errors?.required && form.email.touched && !form.email.valid">Please add an email</div>
-    <div *ngIf="!form.email.errors?.required && form.email.touched && !form.email.valid">Please add a <strong>real</strong> email</div>
-
-    <br>
-
-    <label for="contact">Contact person</label><br>
-    <input
-      type="text"
-      id="contact"
-      placeholder="Name of the contact person"
-      formControlName="contactPerson">
-    <div *ngIf="form.contactPerson.errors?.required && form.contactPerson.touched">Please add a contact person</div>
-  </div>
+    <div class="section-buttons">
+      <button type="button" id="previewButton" (click)="onPreview()">
+        Preview
+        <div></div>
+        <img src="/assets/img/icons8-eye.svg">
+      </button>
+      <div></div>
+      <button type="submit" [disabled]="!publicProfileForm.valid">
+        Save & publish profile
+        <div></div>
+        <img  src="/assets/img/icons8-upward_arrow.svg">
+      </button>
+    </div>
 
 
-  <button type="button" id="previewButton" (click)="onPreview()">Preview</button>
 
-  <button type="submit" [disabled]="!publicProfileForm.valid">Save & publish profile</button>
+  </form>
 
-</form>
+
+</div>
+
