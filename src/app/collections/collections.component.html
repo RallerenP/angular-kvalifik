@@ -1,1 +1,22 @@
-<p>collections works!</p>
+<div style="margin-bottom: 5%">
+  <h1>Collections</h1>
+  <button id="newCollectionButton" type="button" routerLink="/new-collection">New collection</button>
+</div>
+
+<div id="collection-section">
+  <table style="width: 100%; text-align: left">
+    <tr>
+      <th>Title</th>
+      <th>Created</th>
+      <th>Contents</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let collection of collections; let i = index">
+      <td> {{ collection.title }} </td>
+      <td> {{ collection.createdDate | date }} </td>
+      <td> {{ collection.content[0].length }} -  {{ collection.content[1].length }}</td>
+      <td> <button type="button" [class.publishedButton]="collection.status === 'published'"> {{ collection.status }} </button> </td>
+      <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+    </tr>
+  </table>
+</div>

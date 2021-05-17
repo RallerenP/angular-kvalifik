@@ -14,6 +14,7 @@ import {Router} from "@angular/router";
 export class PostEditorComponent implements OnInit, OnDestroy {
 
   posts: Post[] = this.postService.getPosts()
+  collections: Collection[] = []
   postForm: FormGroup
   editMode = false
 
@@ -23,6 +24,7 @@ export class PostEditorComponent implements OnInit, OnDestroy {
     this.editMode = this.postService.getEditMode()
     if (this.editMode) {
       const post = this.posts[this.postService.getEditItemIndex()]
+      this.collections = post.collection
       this.postForm = new FormGroup({
         title: new FormControl(post.title, Validators.required),
         description: new FormControl(post.description, Validators.required),
@@ -55,38 +57,6 @@ export class PostEditorComponent implements OnInit, OnDestroy {
     this.postService.addPost(this.postForm)
     this.editMode = false
     this.router.navigate(['/posts'])
-  }
-
-  generateCollections(): Collection[] {
-    return [
-      new Collection(
-        'A collection title',
-        'A collection description',
-        [
-            this.postService.getPosts(),
-            this.eventService.getEvents()
-        ],
-        Math.random() > 0.5
-       ),
-      new Collection(
-        'A collection title',
-        'A collection description',
-        [
-          this.postService.getPosts().slice(1, 2),
-          this.eventService.getEvents().slice(1, 2)
-        ],
-        Math.random() > 0.5
-        ),
-      new Collection(
-        'A collection title',
-        'A collection description',
-        [
-          this.postService.getPosts().slice(2, 3),
-          this.eventService.getEvents().slice(2, 3)
-        ],
-        Math.random() > 0.5
-      )
-    ]
   }
 
 }

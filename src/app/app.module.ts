@@ -16,6 +16,7 @@ import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.compon
 import { ReactiveFormsModule } from "@angular/forms";
 import { InvitationComponent } from './dashboard/invitation/invitation.component';
 import { PostEditorComponent } from './posts/post-editor/post-editor.component';
+import { CollectionEditorComponent } from './collections/collection-editor/collection-editor.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -24,8 +25,10 @@ const appRoutes: Routes = [
   { path: 'events', component: EventsComponent},
   { path: 'posts', component: PostsComponent},
   { path: 'new-post', component: PostEditorComponent},
-  { path: 'edit/:id', component: PostEditorComponent},
+  { path: 'posts/edit/:id', component: PostEditorComponent},
   { path: 'collections', component: CollectionsComponent},
+  { path: 'new-collection', component: CollectionEditorComponent},
+  { path: 'collections/edit/:id', component: CollectionEditorComponent},
   { path: 'chats', component: ChatsComponent},
   { path: 'volunteers', component:VolunteersComponent }
 
@@ -46,6 +49,7 @@ const appRoutes: Routes = [
     SidebarItemComponent,
     InvitationComponent,
     PostEditorComponent,
+    CollectionEditorComponent,
   ],
   imports: [
     BrowserModule,

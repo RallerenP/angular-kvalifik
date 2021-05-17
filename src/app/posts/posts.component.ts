@@ -19,7 +19,7 @@ export class PostsComponent implements OnInit {
   onEdit(id: number) {
     this.postService.editMode = true
     this.postService.editItemIndex = id
-    this.router.navigate(['/edit', id])
+    this.router.navigate(['/posts/edit', id])
   }
 
 }

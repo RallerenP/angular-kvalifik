@@ -1,8 +1,10 @@
+import {Collection} from "./collection.model";
+
 export class Post {
   title: string
   description: string
   media?: string
-  collection?: string[]
+  collection: Collection[]
   pinned: boolean
   responsible: string
   collaboration: string
@@ -10,7 +12,7 @@ export class Post {
   createdDate: Date
   activity: number[]
 
-  constructor(title: string, description: string, media: string, collection: string[], pinned: boolean, responsible: string, collaboration: string, status: string, createdDate: Date, activity: number[]) {
+  constructor(title: string, description: string, media: string, collection: Collection[], pinned: boolean, responsible: string, collaboration: string, status: string, createdDate: Date, activity: number[]) {
     this.title = title;
     this.description = description;
     this.media = media;
