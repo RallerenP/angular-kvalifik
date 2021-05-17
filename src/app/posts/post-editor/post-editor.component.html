@@ -1,0 +1,70 @@
+<h1>New post</h1>
+
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+
+  <label for="title">Title</label><br>
+  <input
+    type="text"
+    id="title"
+    placeholder="Name your post"
+    formControlName="title"><br>
+
+  <label for="description">Description</label><br>
+  <textarea
+    id="description"
+    rows="6"
+    placeholder="Write your new post here..."
+    formControlName="description"></textarea><br>
+
+  <div class="section" id="media-section">
+    <h3>Add media</h3>
+    <p>You can add one media type to your post. If you want to change the media type, you need to delete the added media first</p>
+    <button type="button">Photo(s)</button>
+    <button type="button">Video</button>
+    <button type="button">Podcast</button>
+  </div>
+
+  <div class="section" id="collection-section">
+    <h3>Collection</h3>
+    <p>You can add this post to one or more collections of related content.</p>
+    <select formControlName="collection">
+      <option *ngFor="let post of posts" [ngValue]="post">{{ post.title }}</option>
+    </select>
+  </div>
+
+  <div class="section">
+    <h3>Pinned</h3>
+    <p>You can pin one post or event to the top of the page.</p>
+    <label class="switch" style="margin-top: 2.5%;">
+      <input type="checkbox" formControlName="pinned">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+
+  <div class="section">
+    <h3>Responsible</h3>
+    <p>Assign responsibility to a volunteer to give them access to edit this content and give them notifications when there are new comments.</p>
+    <select formControlName="responsible">
+      <option *ngFor="let post2 of posts" [ngValue]="post2">{{ post2.title }}</option>
+    </select>
+  </div>
+
+
+  <div class="section">
+    <h3>Collaboration</h3>
+    <p>Invite another student organisation to collaborate on content creation</p>
+    <p>A co-creator will be listed as co-author of the content and the content will show up on their page and feed, but they can't edit the content</p>
+    <select formControlName="collaboration">
+      <option *ngFor="let post3 of posts" [ngValue]="post3">{{ post3.title }}</option>
+    </select>
+  </div>
+
+  <hr>
+
+  <div>
+    <button type="button">Save draft</button>
+    <button type="button" (click)="onSubmit()">Publish post</button>
+  </div>
+
+</form>

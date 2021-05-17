@@ -1,1 +1,25 @@
-<p>posts works!</p>
+<div style="margin-bottom: 5%">
+  <h1>Posts</h1>
+  <button id="newPostButton" type="button" routerLink="/new-post">New post</button>
+</div>
+
+
+<div id="posts-section">
+  <table style="width: 100%; text-align: left">
+    <tr>
+      <th>Title</th>
+      <th>Created</th>
+      <th>Type</th>
+      <th>Activity</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let post of posts; let i = index">
+      <td> {{ post.title }} </td>
+      <td> {{ post.createdDate | date }} </td>
+      <td> {{ post.media }} </td>
+      <td> {{ post.activity[0] }} - {{ post.activity[1] }} </td>
+      <td> <button type="button" [class.publishedButton]="post.status === 'published'"> {{ post.status }} </button> </td>
+      <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+    </tr>
+  </table>
+</div>
