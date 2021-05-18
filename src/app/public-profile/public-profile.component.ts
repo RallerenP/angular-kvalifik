@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../shared/user.service";
 
 @Component({
@@ -16,14 +16,18 @@ export class PublicProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.signedInAs = this.userService.getUser()
+
     this.publicProfileForm = new FormGroup({
-      logoUrl: new FormControl('', Validators.required),
-      coverUrl: new FormControl('', Validators.required),
-      organisationHeader: new FormControl('', Validators.required),
-      organisationBody: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      contactPerson: new FormControl('', Validators.required)
+      logoUrl: new FormControl(null, Validators.required),
+      coverUrl: new FormControl(null, Validators.required),
+      aboutBlocks: new FormArray([]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      contactPerson: new FormControl(null, Validators.required)
     })
+  }
+
+  get aboutBlocks() {
+    return this.publicProfileForm.get('aboutBlocks') as FormArray
   }
 
   get form() {
@@ -38,5 +42,12 @@ export class PublicProfileComponent implements OnInit {
 
   onPreview() {}
 
-  onOrganisation() {}
+  onOrganisation() {
+    this.aboutBlocks.push(new FormGroup({
+      organisationHeader: new FormControl(null, Validators.required),
+      organisationBody: new FormControl(null, Validators.required)
+    }))
+  }
+
+
 }
