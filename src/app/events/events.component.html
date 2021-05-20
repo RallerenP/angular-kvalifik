@@ -1,1 +1,48 @@
-<p>events works!</p>
+<div id="planned-events">
+  <div>
+    <h1>Planned events</h1>
+    <button id="newEventButton" type="button" routerLink="/new-event">New Event</button>
+  </div>
+
+  <div id="planned-section">
+    <table style="width: 100%; text-align: left">
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let event of events; let i = index">
+        <td> {{ event.name }} </td>
+        <td> {{ event.startDate | date }} </td>
+        <td> {{ event.location }}</td>
+        <td> <button type="button" [class.publishedButton]="event.status === 'published'"> {{ event.status }} </button> </td>
+        <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div id="past-events" style="margin-top: 5%">
+  <div>
+    <h1>Past events</h1>
+  </div>
+
+  <div id="past-section">
+    <table style="width: 100%; text-align: left">
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let past of pastEvents; let i = index">
+        <td> {{ past.name }} </td>
+        <td> {{ past.startDate | date }} </td>
+        <td> {{ past.location }}</td>
+        <td> <button type="button" class="pastButton"> {{ past.status }} </button> </td>
+        <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+      </tr>
+    </table>
+  </div>
+</div>

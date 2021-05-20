@@ -59,6 +59,12 @@
       width: 100%;
     }
 
+    .additionalBlocks {
+      input {
+        width: 90%;
+      }
+    }
+
     button {
       @apply transition-colors duration-100;
 

@@ -7,6 +7,8 @@ import {Event} from "../models/event.model";
 export class EventService {
 
   events: Event[] = [this.generateEvent(), this.generateEvent(), this.generateEvent()]
+  editMode: boolean = false
+  editItemIndex: number = -1
 
   constructor() { }
 
