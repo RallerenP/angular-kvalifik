@@ -1,7 +1,11 @@
+import firebase from "firebase";
+import Timestamp = firebase.firestore.Timestamp;
+import {makeId} from "../util/utility";
+
 export class Event {
   name: string;
-  startDate: Date
-  endDate: Date
+  startDate: Timestamp
+  endDate: Timestamp
   description: string
   eventSchedule: string[]
   photoUrl: string
@@ -11,9 +15,10 @@ export class Event {
   collaboration: string
   roomBooking: string
   status: string
+  id: string
 
 
-  constructor(name: string, startDate: Date, endDate: Date, description: string, eventSchedule: string[], photoUrl: string, location: string, pinned: boolean, responsible: string, collaboration: string, roomBooking: string, status: string) {
+  constructor(name: string, startDate: Timestamp, endDate: Timestamp, description: string, eventSchedule: string[], photoUrl: string, location: string, pinned: boolean, responsible: string, collaboration: string, roomBooking: string, status: string, id = makeId()) {
     this.name = name;
     this.startDate = startDate;
     this.endDate = endDate;
@@ -26,5 +31,8 @@ export class Event {
     this.collaboration = collaboration;
     this.roomBooking = roomBooking;
     this.status = status;
+    this.id = id
   }
+
+
 }

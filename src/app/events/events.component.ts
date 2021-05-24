@@ -3,6 +3,8 @@ import { Event} from "../models/event.model";
 import {EventService} from "../shared/event.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import firebase from "firebase";
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-events',
@@ -11,38 +13,32 @@ import {Subscription} from "rxjs";
 })
 export class EventsComponent implements OnInit, OnDestroy {
 
-  timer: number
-  eventsSubscription: Subscription
-  pastEventsSubscription: Subscription
   events: Event[] = []
+  subscription: Subscription
   pastEvents: Event[] = []
+  date: Date
 
   constructor(private eventService: EventService, private router: Router) { }
 
   ngOnInit(): void {
-    this.eventsSubscription = this.eventService.eventsChanged.subscribe((events: Event[]) => {
+    this.date = new Date()
+    this.subscription = this.eventService.get().subscribe( events => {
       this.events = events
+      this.sortEvents()
     })
-    this.pastEventsSubscription = this.eventService.pastEventsChanged.subscribe( (pastEvents: Event[]) => {
-      this.pastEvents = pastEvents
-    })
-    this.events = this.eventService.getEvents()
-    this.pastEvents = this.eventService.getPastEvents()
-
-    this.timer = setInterval( () => {
-      let toMinus = 0
-      this.events.forEach( (event, index) => {
-        if (new Date().getTime() > event.endDate.getTime()) {
-          const copyEvent = {...event, status : 'past'}
-          this.eventService.addPastEvent(index - toMinus, copyEvent)
-          toMinus++
-        }
-      })
-    }, 5000)
   }
 
   ngOnDestroy() {
-    clearInterval(this.timer)
+    this.subscription.unsubscribe()
+  }
+
+  private sortEvents() {
+    this.events.forEach( event => {
+       if (new Date().getTime() > event.endDate.toDate().getTime()) {
+         this.pastEvents.push({...event, status: 'past'})
+
+       }
+    })
   }
 
   onEdit(id: number) {
