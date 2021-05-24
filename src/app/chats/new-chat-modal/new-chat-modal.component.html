@@ -1,0 +1,11 @@
+<div class="absolute-center new-chat-modal-container flex flex-col">
+  <h1 class="">New chat</h1>
+  <div *ngFor="let user of (users | async);" class="flex user">
+    <div class="w-full text-xl flex items-center">
+      <img src="http://cdn.europosters.eu/image/750/minions-despicable-me-jerry-close-up-i24249.jpg" class="w-16 h-16">
+      <div>{{ user.name }}</div>
+      <div class="flex-grow"></div>
+      <div><button><i class="fas fa-comment-alt"></i></button></div>
+    </div>
+  </div>
+</div>

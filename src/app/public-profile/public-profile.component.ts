@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../shared/user.service";
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'app-public-profile',
@@ -9,16 +10,15 @@ import {UserService} from "../shared/user.service";
 })
 export class PublicProfileComponent implements OnInit {
 
-  publicProfileForm: FormGroup;
-  signedInAs: string;
+  publicProfileForm!: FormGroup;
+  name: string;
 
   // publicProfileForm (form) -> aboutBlocks (FormArray) -> FormGroup [organisationHeader, organisationBody]
 
   constructor(private userService: UserService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.signedInAs = this.userService.getUser()
-
+    this.userService.me().subscribe(data => this.name = data!.name)
     this.publicProfileForm = this.fb.group({
         logoUrl: ['', Validators.required],
         coverUrl: ['', Validators.required],

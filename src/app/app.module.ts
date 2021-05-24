@@ -18,6 +18,17 @@ import { InvitationComponent } from './dashboard/invitation/invitation.component
 import { PostEditorComponent } from './posts/post-editor/post-editor.component';
 import { CollectionEditorComponent } from './collections/collection-editor/collection-editor.component';
 import { EventEditorComponent } from './events/event-editor/event-editor.component';
+import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from "@angular/common/http";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { ModalComponent } from './modal/modal.component';
+import { NewChatModalComponent } from './chats/new-chat-modal/new-chat-modal.component';
+import { ModalDirective } from './modal/modal.directive';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -33,8 +44,9 @@ const appRoutes: Routes = [
   { path: 'new-collection', component: CollectionEditorComponent},
   { path: 'collections/edit/:id', component: CollectionEditorComponent},
   { path: 'chats', component: ChatsComponent},
-  { path: 'volunteers', component:VolunteersComponent }
-
+  { path: 'volunteers', component:VolunteersComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent }
 ]
 
 @NgModule({
@@ -52,6 +64,11 @@ const appRoutes: Routes = [
     SidebarItemComponent,
     InvitationComponent,
     PostEditorComponent,
+    SignupComponent,
+    LoginComponent,
+    ModalComponent,
+    NewChatModalComponent,
+    ModalDirective,
     CollectionEditorComponent,
     EventEditorComponent,
   ],
@@ -59,7 +76,11 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

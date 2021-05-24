@@ -1,0 +1,61 @@
+.container {
+  margin-bottom: 48px;
+  background: #fff;
+
+  border-radius: 10px;
+
+  box-shadow: 0px 3px 6px #AAAAAA29;
+
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: min-content 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header header"
+    "chats messages";
+
+
+
+  .header {
+    grid-area: header;
+    font: normal normal bold 26px/36px Open Sans;
+    padding: 24px;
+
+    border-bottom: 1px solid #eee;
+  }
+  .chats {
+    grid-area: chats;
+    padding: 32px;
+    border-right: 1px solid #eee;
+
+    position: relative;
+
+    button {
+      position: absolute;
+      height: 48px;
+      width: 48px;
+
+      bottom: 25px;
+      right: 25px;
+
+      border-radius: 50%;
+      background: var(--cbs-s-blå-skygge);
+
+      color: #fff;
+      fill: #fff;
+
+      &:hover {
+        background: var(--cbs-s-blå);
+      }
+
+      @apply flex justify-center items-center
+    }
+
+  }
+
+  .messages-container {
+    grid-area: messages;
+  }
+}
