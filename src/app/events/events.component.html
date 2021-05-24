@@ -12,13 +12,15 @@
         <th>Location</th>
         <th>Status</th>
       </tr>
-      <tr *ngFor="let event of events; let i = index">
-        <td> {{ event.name }} </td>
-        <td> {{ event.startDate | date }} </td>
-        <td> {{ event.location }}</td>
-        <td> <button type="button" [class.publishedButton]="event.status === 'published'"> {{ event.status }} </button> </td>
-        <td><button type="button" (click)="onEdit(i)">Edit</button></td>
-      </tr>
+      <ng-template ngFor let-event [ngForOf]="events" let-i="index">
+        <tr *ngIf="date.getTime() < event.endDate.toDate().getTime()">
+          <td> {{ event.name }} </td>
+          <td> {{ event.endDate.toDate() | date }} </td>
+          <td> {{ event.location }}</td>
+          <td> <button type="button" [class.publishedButton]="event.status === 'published'"> {{ event.status }} </button> </td>
+          <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+        </tr>
+      </ng-template>
     </table>
   </div>
 </div>
@@ -36,13 +38,17 @@
         <th>Location</th>
         <th>Status</th>
       </tr>
-      <tr *ngFor="let past of pastEvents; let i = index">
-        <td> {{ past.name }} </td>
-        <td> {{ past.startDate | date }} </td>
-        <td> {{ past.location }}</td>
-        <td> <button type="button" class="pastButton"> {{ past.status }} </button> </td>
-        <td><button type="button" (click)="onEdit(i)">Edit</button></td>
-      </tr>
+      <ng-template ngFor let-event [ngForOf]="events" let-i="index">
+        <tr *ngIf="date.getTime() > event.endDate.toDate().getTime()">
+          <td> {{ event.name }} </td>
+          <td> {{ event.endDate.toDate() | date }} </td>
+          <td> {{ event.location }}</td>
+          <td> <button type="button" class="pastButton"> past </button> </td>
+          <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+        </tr>
+      </ng-template>
+
+
     </table>
   </div>
 </div>
