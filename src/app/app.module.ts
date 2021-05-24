@@ -13,16 +13,19 @@ import { CollectionsComponent } from './collections/collections.component';
 import { ChatsComponent } from './chats/chats.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item/sidebar-item.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { InvitationComponent } from './dashboard/invitation/invitation.component';
 import { PostEditorComponent } from './posts/post-editor/post-editor.component';
 import { CollectionEditorComponent } from './collections/collection-editor/collection-editor.component';
+import { EventEditorComponent } from './events/event-editor/event-editor.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'public-profile', component: PublicProfileComponent},
   { path: 'events', component: EventsComponent},
+  { path: 'new-event', component: EventEditorComponent},
+  { path: 'events/edit/:id', component: EventEditorComponent},
   { path: 'posts', component: PostsComponent},
   { path: 'new-post', component: PostEditorComponent},
   { path: 'posts/edit/:id', component: PostEditorComponent},
@@ -50,11 +53,13 @@ const appRoutes: Routes = [
     InvitationComponent,
     PostEditorComponent,
     CollectionEditorComponent,
+    EventEditorComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -37,25 +37,28 @@
       <h2>About</h2>
       <p>Write a header and a short text about the organisation. You can add more headers if you need to.</p>
 
+      <div formGroupName="staticOrganisationBlock">
 
-      <div formArrayName="aboutBlocks">
-
-        <div *ngFor="let control of aboutBlocks.controls; index as i">
-
-          <div [formGroupName]="i">
-
-            <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
-            <textarea rows="6" placeholder="Body" formControlName="organisationBody"></textarea>
-            <div *ngIf="form.organisationHeader.errors?.required && form.organisationHeader.touched">Please add text to the org. header</div>
-            <div *ngIf="form.organisationBody.errors?.required && form.organisationBody.touched">Please add text to the org. body</div>
-
-          </div>
-
-        </div>
+        <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
+        <textarea rows="6" placeholder="Body" formControlName="organisationBody"></textarea>
 
       </div>
 
+      <div formArrayName="additionalOrganisationBlocks" class="additionalBlocks">
 
+          <div *ngFor="let block of additionalOrganisationBlocksForm.controls; let i = index" [formGroupName]="i">
+
+            <div class="flex items-center">
+              <input type="text" class="border" placeholder="Header" formControlName="organisationHeader">
+              <img src="/assets/img/icons8-trash.svg" alt="Trash bin icon" (click)="deleteOrganisationBlock(i)">
+            </div>
+            <br>
+
+            <textarea rows="6" placeholder="Body" formControlName="organisationBody"></textarea>
+
+          </div>
+
+      </div>
 
       <button type="button" (click)="onOrganisation()">New Description Block</button>
     </div>

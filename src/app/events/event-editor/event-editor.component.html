@@ -1,0 +1,118 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
+  <h1>Create event</h1>
+
+  <label for="title">Event title</label><br>
+  <input
+    type="text"
+    id="title"
+    placeholder="Title of event"
+    class="w-6/12"
+    formControlName="title">
+
+  <div class="flex" formGroupName="start">
+    <div class="w-4/12">
+      <label for="start-date">Start date</label><br>
+
+      <input
+        type="date"
+        id="start-date"
+        formControlName="date">
+    </div>
+
+    <div class="w-6/12">
+      <label for="start-time">Start time</label><br>
+
+      <input
+        type="text"
+        id="start-time"
+        formControlName="time">
+    </div>
+  </div>
+
+  <div class="flex" formGroupName="end">
+    <div class="w-4/12">
+      <label for="end-date">End date</label><br>
+
+      <input
+        type="date"
+        id="end-date"
+        formControlName="date">
+    </div>
+
+    <div class="w-6/12">
+      <label for="end-time">End time</label><br>
+
+      <input
+        type="text"
+        id="end-time"
+        formControlName="time">
+    </div>
+  </div>
+
+  <label for="description">Description</label><br>
+  <textarea
+    class="w-6/12"
+    id="description"
+    rows="6"
+    formControlName="description"></textarea>
+
+  <h3>Event schedule (optional)</h3>
+
+  <h3>Photo</h3>
+  <img [src]="photoUrl.value">
+  <input
+    type="text"
+    placeholder="Image URL"
+    #photoUrl
+    formControlName="photoUrl">
+
+  <h3>Location</h3>
+  <p>If you need to book a room on campus, you first have to publish the event. After that, you will
+  be able to fill in a booking form and request a room</p>
+  <input
+    type="text"
+    placeholder="Location"
+    formControlName="location">
+
+  <div class="section">
+    <h3>Pinned</h3>
+    <p>You can pin one post or event to the top of the page.</p>
+    <label class="switch" style="margin-top: 2.5%;">
+      <input type="checkbox" formControlName="pinned">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+
+  <div class="section">
+    <h3>Responsible</h3>
+    <p>Assign responsibility to a volunteer to give them access to edit this content and give them notifications when there are new comments.</p>
+    <select formControlName="responsible">
+      <option *ngFor="let event2 of events" [ngValue]="event2">{{ event2.name }}</option>
+    </select>
+  </div>
+
+
+  <div class="section">
+    <h3>Collaboration</h3>
+    <p>Invite another student organisation to collaborate on content creation</p>
+    <p>A co-creator will be listed as co-author of the content and the content will show up on their page and feed, but they can't edit the content</p>
+    <select formControlName="collaboration">
+      <option *ngFor="let event3 of events" [ngValue]="event3">{{ event3.name }}</option>
+    </select>
+  </div>
+
+  <hr>
+
+  <div>
+    <button type="button">Save draft</button>
+    <button type="submit">Publish post</button>
+  </div>
+
+
+
+
+
+
+</form>
