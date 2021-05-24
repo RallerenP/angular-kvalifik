@@ -35,16 +35,34 @@
 
     <div class="section-about">
       <h2>About</h2>
-      <p>Write a header and a short text aobut the organisation. You can add more headers if you need to.</p>
+      <p>Write a header and a short text about the organisation. You can add more headers if you need to.</p>
 
-      <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
+      <div formGroupName="staticOrganisationBlock">
 
-      <textarea class="border" placeholder="Body" rows="6" formControlName="organisationBody"></textarea><br>
-      <div *ngIf="form.organisationHeader.errors?.required && form.organisationHeader.touched">Please add text to the org. header</div>
-      <div *ngIf="form.organisationBody.errors?.required && form.organisationBody.touched">Please add text to the org. body</div>
+        <input type="text" class="border" placeholder="Header" formControlName="organisationHeader"><br>
+        <textarea rows="6" placeholder="Body" formControlName="organisationBody"></textarea>
+
+      </div>
+
+      <div formArrayName="additionalOrganisationBlocks" class="additionalBlocks">
+
+          <div *ngFor="let block of additionalOrganisationBlocksForm.controls; let i = index" [formGroupName]="i">
+
+            <div class="flex items-center">
+              <input type="text" class="border" placeholder="Header" formControlName="organisationHeader">
+              <img src="/assets/img/icons8-trash.svg" alt="Trash bin icon" (click)="deleteOrganisationBlock(i)">
+            </div>
+            <br>
+
+            <textarea rows="6" placeholder="Body" formControlName="organisationBody"></textarea>
+
+          </div>
+
+      </div>
 
       <button type="button" (click)="onOrganisation()">New Description Block</button>
     </div>
+
     <div class="separator"></div>
     <div class="section-contact" id="contact-information">
       <h2>Contact information</h2>

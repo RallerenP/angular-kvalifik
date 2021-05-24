@@ -8,8 +8,8 @@ import {FormGroup} from "@angular/forms";
 export class PostService{
 
   posts: Post[] = this.generatePosts()
-  editMode!: boolean
-  editItemIndex!: number
+  editMode: boolean = false
+  editItemIndex: number = -1
 
   constructor() { }
 
@@ -19,10 +19,7 @@ export class PostService{
       'An interesting title',
       'An interesting description',
       'Video',
-      [
-        'Stuff',
-        'Even more stuff'
-      ],
+      [],
       true,
       'cph management consulting club',
       'Someone to collab with',
@@ -34,10 +31,7 @@ export class PostService{
         'An interesting title 2',
         'An interesting description 2',
         'Podcast',
-        [
-          'Stuff',
-          'Even more stuff'
-        ],
+        [],
         true,
         'cph management consulting club',
         'Someone to collab with',
@@ -49,10 +43,7 @@ export class PostService{
         'An interesting title 3',
         'An interesting description 3',
         'Photos',
-        [
-          'Stuff',
-          'Even more stuff'
-        ],
+        [],
         true,
         'cph management consulting club',
         'Someone to collab with',

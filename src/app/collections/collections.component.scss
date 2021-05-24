@@ -1,0 +1,32 @@
+h1 {
+  display: inline-block;
+  color: #32305D;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#newCollectionButton {
+  display: inline-block;
+  float: right;
+  margin-right: 5%;
+  padding: 5px 130px;
+  background: #5050A5;
+  color: white;
+}
+
+button {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+td:nth-of-type(5) button {
+  border: 1px solid #5050A5;
+}
+
+td:nth-of-type(4) button {
+  background-color: #f4a460;
+}
+
+.publishedButton {
+  background-color: #90ee90 !important;
+}

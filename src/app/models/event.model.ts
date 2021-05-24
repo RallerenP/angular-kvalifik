@@ -3,7 +3,7 @@ export class Event {
   startDate: Date
   endDate: Date
   description: string
-  eventSchedule: string
+  eventSchedule: string[]
   photoUrl: string
   location: string
   pinned: boolean
@@ -13,7 +13,7 @@ export class Event {
   status: string
 
 
-  constructor(name: string, startDate: Date, endDate: Date, description: string, eventSchedule: string, photoUrl: string, location: string, pinned: boolean, responsible: string, collaboration: string, roomBooking: string, status: string) {
+  constructor(name: string, startDate: Date, endDate: Date, description: string, eventSchedule: string[], photoUrl: string, location: string, pinned: boolean, responsible: string, collaboration: string, roomBooking: string, status: string) {
     this.name = name;
     this.startDate = startDate;
     this.endDate = endDate;

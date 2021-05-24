@@ -28,7 +28,7 @@
     <h3>Collection</h3>
     <p>You can add this post to one or more collections of related content.</p>
     <select formControlName="collection">
-      <option *ngFor="let post of posts" [ngValue]="post">{{ post.title }}</option>
+      <option *ngFor="let collection of collections" [ngValue]="collection">{{ collection.title }}</option>
     </select>
   </div>
 

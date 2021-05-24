@@ -5,14 +5,17 @@ export class Collection {
 
   title: string
   description: string
+  createdDate: Date
   content: [Post[], Event[]]
   pinned: boolean
+  status: string
 
-
-  constructor(title: string, description: string, content: [Post[], Event[]], pinned: boolean) {
+  constructor(title: string, description: string, createdDate: Date, content: [Post[], Event[]], pinned: boolean, status: string) {
     this.title = title;
     this.description = description;
+    this.createdDate = createdDate
     this.content = content;
     this.pinned = pinned;
+    this.status = status
   }
 }
