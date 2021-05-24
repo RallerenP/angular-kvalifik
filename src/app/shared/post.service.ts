@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Post} from "../models/post.model";
 import {FormGroup} from "@angular/forms";
-import {CollectionService} from "./collection.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class PostService{
   editMode: boolean = false
   editItemIndex: number = -1
 
-  constructor(private collectionService: CollectionService) { }
+  constructor() { }
 
   generatePosts(): Post[] {
     return [
@@ -20,7 +19,7 @@ export class PostService{
       'An interesting title',
       'An interesting description',
       'Video',
-      [this.collectionService.collections[0]],
+      [],
       true,
       'cph management consulting club',
       'Someone to collab with',
@@ -32,7 +31,7 @@ export class PostService{
         'An interesting title 2',
         'An interesting description 2',
         'Podcast',
-        [this.collectionService.collections[1]],
+        [],
         true,
         'cph management consulting club',
         'Someone to collab with',
@@ -44,7 +43,7 @@ export class PostService{
         'An interesting title 3',
         'An interesting description 3',
         'Photos',
-        [this.collectionService.collections[2]],
+        [],
         true,
         'cph management consulting club',
         'Someone to collab with',
