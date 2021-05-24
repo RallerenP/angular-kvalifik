@@ -53,6 +53,34 @@
       @apply flex justify-center items-center
     }
 
+    .chat {
+      @apply flex items-center flex-row flex-grow;
+      padding: 10px;
+      border-radius: 10px;
+      height: 80px;
+
+
+      &.selected {
+        background: var(--cbs-s-blå-tone);
+      }
+
+      h3 {
+        font: normal normal bold 16px/22px Open Sans;
+        color: var(--cbs-s-blå-skygge);
+      }
+
+      p {
+        font: normal normal normal 16px/22px Open Sans;
+        color: var(--cbs-s-blå-skygge);
+      }
+
+      img {
+        height: 60px;
+        width: 60px;
+        margin-right: 14px;
+        border-radius: 50%;
+      }
+    }
   }
 
   .messages-container {

@@ -5,7 +5,7 @@
       <img src="http://cdn.europosters.eu/image/750/minions-despicable-me-jerry-close-up-i24249.jpg" class="w-16 h-16">
       <div>{{ user.name }}</div>
       <div class="flex-grow"></div>
-      <div><button><i class="fas fa-comment-alt"></i></button></div>
+      <div><button (click)="newChat(user.uid)"><i class="fas fa-comment-alt"></i></button></div>
     </div>
   </div>
 </div>

@@ -3,6 +3,16 @@
     Chats
   </div>
   <div class="chats flex">
+    <ng-template ngFor [ngForOf]="chats" let-chat>
+      <div class="chat selected">
+        <img src="http://cdn.europosters.eu/image/750/minions-despicable-me-jerry-close-up-i24249.jpg">
+        <div class="info">
+          <h3>{{ (chat.users | async)![0].uid === (me | async)?.uid ? (chat.users | async)![1].name : (chat.users | async)![0].name }}</h3>
+          <p>En Besked</p>
+        </div>
+      </div>
+    </ng-template>
+
     <button (click)="openNewChatModal()" class="new-chat-button">
       <i class="fas fa-plus"></i>
     </button>
