@@ -1,39 +1,35 @@
+import {IMessageable, MessageableType} from "../shared/messageable.interface";
+
 export enum UserType {
   VOLUNTEER,
   ADMIN
 }
 
-export class User {
+export class User implements IMessageable {
+  private readonly _name: string;
+  private readonly imageUrl: string;
+  private programme: string;
+  private uid: string;
 
-  username: string;
-  password: string;
-  imageUrl: string;
-  volunteer: boolean;
-  studyProgramme: string;
-  type: UserType;
-  applicationDate: Date;
-  volunteerSince: Date;
-  groups: []
+  messageable_type: MessageableType = MessageableType.USER;
 
 
-  constructor(
-    username: string,
-    password: string,
-    imageUrl: string,
-    volunteer: boolean,
-    studyProgramme: string,
-    type: UserType,
-    applicationDate: Date,
-    volunteerSince: Date,
-    groups: []) {
-    this.username = username;
-    this.password = password;
+  constructor(name: string, imageUrl: string, programme: string, uid: string) {
+    this._name = name;
     this.imageUrl = imageUrl;
-    this.volunteer = volunteer;
-    this.studyProgramme = studyProgramme;
-    this.type = type;
-    this.applicationDate = applicationDate;
-    this.volunteerSince = volunteerSince;
-    this.groups = groups;
+    this.programme = programme;
+    this.uid = uid;
+  }
+
+  public get name() {
+    return this._name
+  }
+
+  getName(): string {
+    return this._name;
+  }
+
+  getImage(): string {
+    return this.imageUrl;
   }
 }

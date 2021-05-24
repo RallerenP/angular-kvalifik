@@ -1,0 +1,57 @@
+.new-chat-modal-container {
+  max-height: 75%;
+  background: white;
+
+  border-radius: 10px;
+
+  padding: 40px;
+
+  min-width: 500px;
+
+  overflow-y: auto;
+
+  h1 {
+    font: normal normal bold 26px/36px Open Sans;
+    color: var(--cbs-s-blå-skygge);
+
+    margin: 0 0 20px 0;
+  }
+
+  h3 {
+    margin: 20px 0;
+    font: normal normal bold 16px/22px Open Sans;
+  }
+
+  .user {
+    padding: 20px;
+    box-sizing: border-box;;
+    height: 48px;
+
+    margin: 20px 0;
+
+    img {
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    button {
+
+      height: 48px;
+      width: 48px;
+
+      border-radius: 50%;
+      background: var(--cbs-s-blå-skygge);
+
+      color: #fff;
+      fill: #fff;
+
+      &:hover {
+        background: var(--cbs-s-blå);
+      }
+
+      @apply flex justify-center items-center
+    }
+  }
+
+
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ModalService} from "../modal/modal.service";
+import {NewChatModalComponent} from "./new-chat-modal/new-chat-modal.component";
 
 @Component({
   selector: 'app-chats',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
+  }
+
+  openNewChatModal() {
+    console.log("something")
+    this.modalService.open(NewChatModalComponent)
   }
 
 }

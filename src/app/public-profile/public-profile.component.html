@@ -1,5 +1,5 @@
 <div class="container flex flex-col">
-  <h1>{{ signedInAs }}</h1>
+  <h1>{{ name }}</h1>
   <div class="separator"></div>
 
   <form [formGroup]="publicProfileForm" (ngSubmit)="onSubmit()">
@@ -48,12 +48,12 @@
 
           <div *ngFor="let block of additionalOrganisationBlocksForm.controls; let i = index" [formGroupName]="i">
 
-            <div class="flex items-center">
+            <div class="flex">
               <input type="text" class="border" placeholder="Header" formControlName="organisationHeader">
-              <img src="/assets/img/icons8-trash.svg" alt="Trash bin icon" (click)="deleteOrganisationBlock(i)">
+              <div class="flex items-center justify-center flex-col trash">
+                <img src="/assets/img/icons8-trash.svg" alt="Trash bin icon" (click)="deleteOrganisationBlock(i)">
+              </div>
             </div>
-            <br>
-
             <textarea rows="6" placeholder="Body" formControlName="organisationBody"></textarea>
 
           </div>

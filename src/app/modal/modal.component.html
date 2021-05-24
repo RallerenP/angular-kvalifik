@@ -1,0 +1,5 @@
+<div (click)="containerClick($event)" class="modal-container" [ngClass]="{open: (display | async) === 'open'}">
+  <div (click)="modalClick($event)">
+    <ng-template modal-content></ng-template>
+  </div>
+</div>
