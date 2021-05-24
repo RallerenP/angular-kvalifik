@@ -25,7 +25,6 @@ export class UserService {
     this.users = afStore.collection<User>('users').valueChanges();
   }
 
-
   me(): Observable<User | undefined> {
     return this.afAuth.user.pipe(mergeMap((user => {
       return this.get(user?.uid)
@@ -39,6 +38,10 @@ export class UserService {
     }));
   }
 
+  getMultipleByIds(ids: string[]) {
+    return this.afStore.collection<User>('users', (ref) => ref.where('uid', 'in', ids)).valueChanges()
+  }
+
   getAll(): Observable<User[]> {
     return this.users;
   }
@@ -46,6 +49,7 @@ export class UserService {
 
   async create(dto: CreateUserDto) {
     const doc = this.afStore.doc<CreateUserDto>(`/users/${dto.uid}`);
+
     doc.set({ name: dto.name, email: dto.email, uid: dto.uid, programme: dto.programme })
   }
 

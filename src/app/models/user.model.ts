@@ -9,7 +9,7 @@ export class User implements IMessageable {
   private readonly _name: string;
   private readonly imageUrl: string;
   private programme: string;
-  private uid: string;
+  private readonly _uid: string;
 
   messageable_type: MessageableType = MessageableType.USER;
 
@@ -18,11 +18,15 @@ export class User implements IMessageable {
     this._name = name;
     this.imageUrl = imageUrl;
     this.programme = programme;
-    this.uid = uid;
+    this._uid = uid;
   }
 
   public get name() {
     return this._name
+  }
+
+  get uid(): string {
+    return this._uid;
   }
 
   getName(): string {
