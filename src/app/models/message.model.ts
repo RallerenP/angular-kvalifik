@@ -1,7 +1,18 @@
-import {IMessageable} from "../shared/messageable.interface";
+import {User} from "./user.model";
+import firebase from "firebase";
+import Timestamp = firebase.firestore.Timestamp;
+import {Observable} from "rxjs";
 
 export class Message {
-  sender: IMessageable;
+  sender: Observable<User | undefined>;
+  chat_id: string;
   content: string;
-  sent: Date;
+  sent: Timestamp;
+}
+
+export class FireStoreMessage {
+  sender: string;
+  content: string;
+  chat_id: string;
+  sent: Timestamp;
 }

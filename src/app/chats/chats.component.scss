@@ -58,6 +58,11 @@
       padding: 10px;
       border-radius: 10px;
       height: 80px;
+      cursor: pointer;
+
+      &:hover {
+        background: #f2f2f9;
+      }
 
 
       &.selected {

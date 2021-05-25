@@ -19,12 +19,13 @@ export class ChatService {
     userService.me().subscribe((data) => {
       this.uid = data!.uid
       this.afStore.collection<FireStoreChat>('chats', ref => ref.where('users', 'array-contains', this.uid))
-        .valueChanges()
+        .valueChanges({idField: 'chat_id'})
         .pipe(
-          map((data) => {
-            return data.map((fireStoreChat => {
+          map((data: FireStoreChat[] & {chat_id: string}[]) => {
+            return data.map(((fireStoreChat, index) => {
               const users = this.userService.getMultipleByIds(fireStoreChat.users);
-              const chat: Chat = {users, messages: []}
+              const id = data[index].chat_id;
+              const chat: Chat = {users, id}
               return chat;
             }))
           })
@@ -35,7 +36,6 @@ export class ChatService {
 
       this._chats.subscribe((chats) => console.log(chats))
     })
-
   }
 
   public get chats(): Observable<Chat[]>{
@@ -43,6 +43,6 @@ export class ChatService {
   }
 
   async create(other_uid: string) {
-    await this.afStore.collection<FireStoreChat>('chats').add({ users: [this.uid, other_uid], messages: [] });
+    await this.afStore.collection<FireStoreChat>('chats').add({ users: [this.uid, other_uid]});
   }
 }

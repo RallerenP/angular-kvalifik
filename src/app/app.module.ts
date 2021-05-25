@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 import { ModalComponent } from './modal/modal.component';
 import { NewChatModalComponent } from './chats/new-chat-modal/new-chat-modal.component';
 import { ModalDirective } from './modal/modal.directive';
+import { MessagesComponent } from './chats/messages/messages.component';
 
 
 const appRoutes: Routes = [
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
     ModalDirective,
     CollectionEditorComponent,
     EventEditorComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

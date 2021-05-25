@@ -1,0 +1,24 @@
+<div class="messages-container">
+  <div class="messages-container-inner">
+    <ng-template ngFor [ngForOf]="messages | async" let-mess>
+      <div *ngIf="messages" [ngClass]="{owned: (mess.sender | async)!.uid === me.uid}">
+        <div>{{ mess.content }}</div>
+      </div>
+    </ng-template>
+
+  </div>
+  <div class="input-container flex">
+
+    <div class="profile-picture-container">
+      <img src="http://cdn.europosters.eu/image/750/minions-despicable-me-jerry-close-up-i24249.jpg">
+    </div>
+    <div class="flex-grow flex flex-col">
+      <div class="user-info">Placeholder...</div>
+      <div class="flex-grow flex items-center">
+        <input (keydown)="inputKeyDown($event)" [formControl]="message">
+        <button (click)="send()" [disabled]="message.value.length === 0"><img src="/assets/img/icons8-email_send.svg"></button>
+      </div>
+    </div>
+
+  </div>
+</div>

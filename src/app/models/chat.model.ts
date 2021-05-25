@@ -7,11 +7,10 @@ import {User} from "./user.model";
 
 export class Chat {
   users: Observable<User[]>;
-  messages: Message[] = [];
+  id: string;
 }
 
 // What is stored on the FireStore
 export class FireStoreChat {
   users: string[]; // UIDs
-  messages: string[]; // Message IDs
 }
