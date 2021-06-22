@@ -1,6 +1,6 @@
 <div id="planned-events">
   <div>
-    <h1>Planned events</h1>
+    <h1 class="e2e-planned-events">Planned events</h1>
     <button id="newEventButton" type="button" routerLink="/new-event">New Event</button>
   </div>
 
@@ -13,7 +13,7 @@
         <th>Status</th>
       </tr>
       <ng-template ngFor let-event [ngForOf]="events" let-i="index">
-        <tr *ngIf="date.getTime() < event.endDate.toDate().getTime()">
+        <tr class="e2e-planned" *ngIf="date.getTime() < event.endDate.toDate().getTime()">
           <td> {{ event.name }} </td>
           <td> {{ event.endDate.toDate() | date }} </td>
           <td> {{ event.location }}</td>
@@ -39,7 +39,7 @@
         <th>Status</th>
       </tr>
       <ng-template ngFor let-event [ngForOf]="events" let-i="index">
-        <tr *ngIf="date.getTime() > event.endDate.toDate().getTime()">
+        <tr class="e2e-passed" *ngIf="date.getTime() > event.endDate.toDate().getTime()">
           <td> {{ event.name }} </td>
           <td> {{ event.endDate.toDate() | date }} </td>
           <td> {{ event.location }}</td>

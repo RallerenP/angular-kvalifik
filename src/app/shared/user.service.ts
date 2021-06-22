@@ -9,6 +9,7 @@ import {AngularFirestore} from "@angular/fire/firestore";
 import firebase from "firebase";
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import {flatMap, map, mergeMap} from "rxjs/operators";
+import { UserActions } from "../store/actions/UserActions";
 
 
 @Injectable({
@@ -19,10 +20,15 @@ export class UserService {
   signedInAs: User | null = null;
   users: Observable<User[]>
 
-  constructor(private http: HttpClient, private afAuth: AngularFireAuth, private afStore: AngularFirestore) {
+  constructor(private http: HttpClient, private afAuth: AngularFireAuth, private afStore: AngularFirestore, private userActions: UserActions) {
     this.signedInAs = new User("Not Logged In", "", "", "");
 
     this.users = afStore.collection<User>('users').valueChanges();
+
+    this.me().subscribe((me: User | undefined) => {
+      if (me !== undefined)
+        this.userActions.setUsername(me.name)
+    })
   }
 
   me(): Observable<User | undefined> {

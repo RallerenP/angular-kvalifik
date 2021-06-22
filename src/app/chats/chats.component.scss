@@ -27,10 +27,13 @@
   }
   .chats {
     grid-area: chats;
-    padding: 32px;
+    padding: 22px;
     border-right: 1px solid #eee;
 
     position: relative;
+    display: flex;
+
+    @apply flex-col;
 
     button {
       position: absolute;
@@ -58,6 +61,8 @@
       padding: 10px;
       border-radius: 10px;
       height: 80px;
+      flex-grow: 0;
+      margin: 10px;
       cursor: pointer;
 
       &:hover {

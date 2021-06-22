@@ -20,7 +20,7 @@ export class MessagesComponent implements OnInit {
   _chat: Chat;
   constructor(private messageService: MessageService, private userService: UserService) { }
 
-  messages: Observable<Message[]>
+  messages: Message[]
   message: FormControl = new FormControl('');
   me: User;
 
@@ -35,9 +35,10 @@ export class MessagesComponent implements OnInit {
       pipe((chat: Chat | null) => {
         if (chat === null || chat === undefined) return;
 
-        this.messages = this.messageService.get(chat.id);
+        this.messageService.get(chat.id).subscribe((_messages: Message[]) => {
+          this.messages = _messages;
+        })
 
-        this.messages.toPromise().then(result => console.log(result));
         this._chat = chat;
       })
     )

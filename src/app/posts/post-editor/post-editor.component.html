@@ -1,6 +1,6 @@
 <h1>New post</h1>
 
-<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+<form *ngIf="!editMode || _post !== undefined" [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
   <label for="title">Title</label><br>
   <input
@@ -27,9 +27,6 @@
   <div class="section" id="collection-section">
     <h3>Collection</h3>
     <p>You can add this post to one or more collections of related content.</p>
-    <select formControlName="collection">
-      <option *ngFor="let collection of collections" [ngValue]="collection">{{ collection.title }}</option>
-    </select>
   </div>
 
   <div class="section">
