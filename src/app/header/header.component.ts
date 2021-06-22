@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import firebase from "firebase/app";
 import Auth = firebase.auth.Auth;
 import {AngularFireAuth} from "@angular/fire/auth";
+import { NgRedux } from "@angular-redux/store";
+import { AppState } from "../store/Store";
 
 @Component({
   selector: 'app-header',
@@ -18,10 +20,16 @@ export class HeaderComponent implements OnInit {
 
   name: string;
 
-  constructor(public auth: AngularFireAuth, public userService: UserService) {}
+  constructor(public auth: AngularFireAuth, public userService: UserService, private ngRedux: NgRedux<AppState>) {}
 
   async ngOnInit(): Promise<void> {
-    this.userService.me().subscribe(data => this.name = data!.name)
+    this.ngRedux.select(state => state.user).subscribe(res => {
+      if (res?.username !== undefined)
+        this.name = res?.username;
+    })
+    // this.userService.me().subscribe(data => {
+    //   if (data !== undefined) this.name = data!.name
+    // })
   }
 
 }

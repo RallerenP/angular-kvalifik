@@ -3,7 +3,7 @@
   <button id="newPostButton" type="button" routerLink="/new-post">New post</button>
 </div>
 
-
+<input id="e2e-search" placeholder="Search..." [formControl]="searchInput">
 <div id="posts-section">
   <table style="width: 100%; text-align: left">
     <tr>
@@ -13,13 +13,14 @@
       <th>Activity</th>
       <th>Status</th>
     </tr>
-    <tr *ngFor="let post of posts; let i = index">
-      <td> {{ post.title }} </td>
+    <tr *ngFor="let post of (postService._posts | async) | filterPosts: searchInput.value; let i = index">
+      <td class="e2e-post-title"> {{ post.title }} </td>
       <td> {{ post.createdDate | date }} </td>
       <td> {{ post.media }} </td>
       <td> {{ post.activity[0] }} - {{ post.activity[1] }} </td>
       <td> <button type="button" [class.publishedButton]="post.status === 'published'"> {{ post.status }} </button> </td>
-      <td><button type="button" (click)="onEdit(i)">Edit</button></td>
+      <td><button type="button" routerLink="/posts/edit/{{post._id}}" >Edit</button></td>
+      <td><button type="button" class="bg-red-200" (click)="onDelete(post._id)">Delete</button></td>
     </tr>
   </table>
 </div>

@@ -28,6 +28,10 @@ import { LoginComponent } from './login/login.component';
 import { ModalComponent } from './modal/modal.component';
 import { NewChatModalComponent } from './chats/new-chat-modal/new-chat-modal.component';
 import { ModalDirective } from './modal/modal.directive';
+import { MessagesComponent } from './chats/messages/messages.component';
+import { DevToolsExtension, NgRedux, NgReduxModule } from "@angular-redux/store";
+import { AppState, rootReducer } from "./store/Store";
+import { FilterPostsPipe } from './posts/filter-posts.pipe';
 
 
 const appRoutes: Routes = [
@@ -71,6 +75,8 @@ const appRoutes: Routes = [
     ModalDirective,
     CollectionEditorComponent,
     EventEditorComponent,
+    MessagesComponent,
+    FilterPostsPipe,
   ],
   imports: [
     BrowserModule,
@@ -80,9 +86,18 @@ const appRoutes: Routes = [
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgReduxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    private ngRedux: NgRedux<AppState>,
+    private devTool: DevToolsExtension,
+  ) {
+    this.ngRedux.configureStore(rootReducer, {});
+  }
+
+}

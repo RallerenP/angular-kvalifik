@@ -4,7 +4,7 @@
   </div>
   <div class="chats flex">
     <ng-template ngFor [ngForOf]="chats" let-chat>
-      <div class="chat selected">
+      <div (click)="select(chat)" class="chat" [ngClass]="{selected: chat === (selected | async)}">
         <img src="http://cdn.europosters.eu/image/750/minions-despicable-me-jerry-close-up-i24249.jpg">
         <div class="info">
           <h3>{{ (chat.users | async)![0].uid === (me | async)?.uid ? (chat.users | async)![1].name : (chat.users | async)![0].name }}</h3>
@@ -18,6 +18,6 @@
     </button>
   </div>
   <div class="messages-container">
-
+    <app-messages [chat]="selected"></app-messages>
   </div>
 </div>

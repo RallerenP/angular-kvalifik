@@ -66,6 +66,7 @@
       type="text"
       placeholder="Image URL"
       #photoUrl
+      id="photo-url"
       formControlName="photoUrl">
 
     <h3>Location</h3>
@@ -74,7 +75,9 @@
     <input
       type="text"
       placeholder="Location"
-      formControlName="location">
+      formControlName="location"
+      id="location"
+    >
 
     <div class="section">
       <h3>Pinned</h3>
@@ -108,7 +111,7 @@
 
     <div>
       <button type="button">Save draft</button>
-      <button type="submit" *ngIf="!editMode" (click)="onSubmit()">Publish post</button>
+      <button type="submit" class="e2e-submit" *ngIf="!editMode" (click)="onSubmit()">Publish post</button>
       <button type="submit" *ngIf="editMode" (click)="onEdit()">Edit post</button>
     </div>
 

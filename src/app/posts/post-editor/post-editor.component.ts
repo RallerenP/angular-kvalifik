@@ -14,22 +14,27 @@ import {Router} from "@angular/router";
 export class PostEditorComponent implements OnInit, OnDestroy {
 
   posts: Post[] = this.postService.getPosts()
+  _post: Post;
   collections: Collection[] = []
   postForm: FormGroup
   editMode = false
+  id: string;
 
   constructor(private eventService: EventService, private postService: PostService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.editMode = this.postService.getEditMode()
+  async ngOnInit() {
+    this.id = this.router.url.split('/')[3];
+
+    this.editMode = this.id !== undefined
+
     if (this.editMode) {
-      const post = this.posts[this.postService.getEditItemIndex()]
-      this.collections = post.collection
+      const post = await this.postService.getPost(this.id);
+      this._post = post;
+
       this.postForm = new FormGroup({
         title: new FormControl(post.title, Validators.required),
         description: new FormControl(post.description, Validators.required),
         media: new FormControl(post.media, Validators.required),
-        collection: new FormControl(post.collection),
         pinned: new FormControl(post.pinned),
         responsible: new FormControl(post.responsible),
         collaboration: new FormControl(post.collaboration)
@@ -39,7 +44,6 @@ export class PostEditorComponent implements OnInit, OnDestroy {
        title: new FormControl('', Validators.required),
        description: new FormControl('', Validators.required),
        media: new FormControl('', Validators.required),
-       collection: new FormControl(''),
        pinned: new FormControl(false),
        responsible: new FormControl(''),
        collaboration: new FormControl('')
@@ -53,10 +57,16 @@ export class PostEditorComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.postForm)
-    this.postService.addPost(this.postForm)
+    if (this.editMode) {
+      this.postService.update(this.id, this.postForm)
+      this.router.navigate(['/posts'])
+    } else {
+      this.postService.addPost(this.postForm)
+      this.router.navigate(['/posts'])
+    }
+
     this.editMode = false
-    this.router.navigate(['/posts'])
+
   }
 
 }

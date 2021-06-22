@@ -41,8 +41,8 @@ export class EventEditorComponent implements OnInit, OnDestroy {
           photoUrl: new FormControl(event.photoUrl, Validators.required),
           location: new FormControl(event.location, Validators.required),
           pinned: new FormControl(event.pinned, Validators.required),
-          responsible: new FormControl(event.responsible, Validators.required),
-          collaboration: new FormControl(event.collaboration, Validators.required)
+          responsible: new FormControl(event.responsible),
+          collaboration: new FormControl(event.collaboration)
         })
       }
 
@@ -63,8 +63,8 @@ export class EventEditorComponent implements OnInit, OnDestroy {
       photoUrl: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
       pinned: new FormControl('', Validators.required),
-      responsible: new FormControl('', Validators.required),
-      collaboration: new FormControl('', Validators.required)
+      responsible: new FormControl(''),
+      collaboration: new FormControl('')
     })
 
 

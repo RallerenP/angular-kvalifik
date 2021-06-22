@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { UserSignupDto } from "../dto/user-signup.dto";
 import {UserService} from "./user.service";
 import {UserLoginDto} from "../dto/user-login.dto";
+import { UserActions } from "../store/actions/UserActions";
+import { User } from "../models/user.model";
 
 
 @Injectable({
@@ -18,6 +20,9 @@ export class AuthService {
   }
 
   public async login(dto: UserLoginDto) {
-    return await this.afAuth.signInWithEmailAndPassword(dto.email, dto.password)
+
+    await this.afAuth.signInWithEmailAndPassword(dto.email, dto.password);
+
+    return;
   }
 }
